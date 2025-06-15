@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>About - SG Nexsz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      overflow: hidden;
+      position: relative;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      text-align: center;
+      max-width: 480px;
+      width: 100%;
+      animation: fadeInScale 1.2s ease forwards;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    }
+
+    p {
+      font-size: 20px;
+      margin-bottom: 40px;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.25);
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 30px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #764ba2;
+      background: white;
+      border-radius: 40px;
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-back:hover {
+      color: white;
+      background: #764ba2;
+      box-shadow: 0 8px 30px rgba(118, 75, 162, 0.8);
+      transform: scale(1.1);
+    }
+
+    .btn-back:before {
+      content: '';
+      position: absolute;
+      left: -50%;
+      top: 0;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+      transform: skewX(-20deg);
+      transition: all 0.5s ease;
+    }
+
+    .btn-back:hover:before {
+      left: 100%;
+    }
+
+
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.85);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      animation: rise 15s linear infinite;
+      opacity: 0.6;
+    }
+
+    .bubble:nth-child(1) {
+      width: 40px;
+      height: 40px;
+      left: 10%;
+      animation-duration: 12s;
+      animation-delay: 0s;
+    }
+
+    .bubble:nth-child(2) {
+      width: 60px;
+      height: 60px;
+      left: 30%;
+      animation-duration: 18s;
+      animation-delay: 4s;
+    }
+
+    .bubble:nth-child(3) {
+      width: 20px;
+      height: 20px;
+      left: 50%;
+      animation-duration: 14s;
+      animation-delay: 2s;
+    }
+
+    .bubble:nth-child(4) {
+      width: 80px;
+      height: 80px;
+      left: 70%;
+      animation-duration: 20s;
+      animation-delay: 6s;
+    }
+
+    .bubble:nth-child(5) {
+      width: 30px;
+      height: 30px;
+      left: 90%;
+      animation-duration: 16s;
+      animation-delay: 1s;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      .btn-back {
+        font-size: 16px;
+        padding: 12px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <div class="container" role="main">
+    <h1>กำลังพัฒนา...</h1>
+    <p>หน้านี้อยู่ในระหว่างการพัฒนา โปรดติดตามในเร็วๆ นี้</p>
+
+    <button class="btn-back" onclick="goBack()">← กลับหน้าหลัก</button>
+  </div>
+
+  <script>
+    function goBack() {
+      window.location.href = 'wednexsz.html';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>ติดต่อเรา - SG Nexsz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .contact-card {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      max-width: 600px;
+      width: 100%;
+      animation: fadeInUp 1s ease;
+      text-align: center;
+      position: relative;
+    }
+
+    .contact-card h1 {
+      font-size: 32px;
+      color: #4b5aa7;
+      margin-bottom: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #f2f4f8;
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin: 15px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-5px);
+      background-color: #e8ecf5;
+    }
+
+    .contact-item img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.5s ease;
+    }
+
+    .contact-item:hover img {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    .contact-info {
+      font-size: 18px;
+      text-align: left;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #4b5aa7;
+      background: linear-gradient(135deg, #a3c1f9, #4b5aa7);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(75, 90, 167, 0.4);
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      user-select: none;
+      margin-bottom: 25px;
+    }
+
+    .btn-back:hover {
+      background: linear-gradient(135deg, #5c72e2, #334a9f);
+      box-shadow: 0 8px 20px rgba(51, 74, 159, 0.6);
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    .btn-back:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 3px 8px rgba(75, 90, 167, 0.2);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contact-card {
+        padding: 30px 20px;
+      }
+
+      .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-info {
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-card">
+    <button class="btn-back" onclick="goBack()">← ย้อนกลับ</button>
+
+    <h1>ติดต่อ </h1>
+
+    <div class="contact-item" onclick="window.open('https://www.instagram.com/sorawit_165/', '_blank')">
+      <img src="iglogo.png" alt="Instagram" />
+      <div class="contact-info">@sorawit_165</div>
+    </div>
+
+    <div class="contact-item" onclick="copyToClipboard('sorawit_165')">
+      <img src="discord.png" alt="Discord" />
+      <div class="contact-info">Discord: sorawit_165</div>
+    </div>
+
+    <div class="contact-item" onclick="window.open('https://www.youtube.com/@Sorawit_16')">
+      <img src="YT.png" alt="Youtube" />
+      <div class="contact-info">YT Bedrock Studios</div>
+    </div>
+
+    <p style="margin-top: 25px; color: #888; font-size: 14px;">(คลิกเพื่อเปิดหรือคัดลอก)</p>
+  </div>
+
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('คัดลอก "' + text + '" แล้ว!');
+      });
+    }
+
+    function goBack() {
+      window.location.href = 'wednexsz.html';
+    }
+  </script>
+</body>
+</html>
