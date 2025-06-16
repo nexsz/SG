@@ -4,153 +4,230 @@
   <meta charset="UTF-8" />
   <title>ติดต่อเรา - SG Nexsz</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a2d9a66f09.js" crossorigin="anonymous"></script>
   <style>
     * {
       box-sizing: border-box;
-      padding: 0;
       margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      background: linear-gradient(to right, #c9d6ff, #e2e2e2);
       min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 250px;
+      background: linear-gradient(180deg, #4b5aa7, #6f79e2);
+      color: white;
+      padding: 40px 20px;
+      box-shadow: 5px 0 20px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    .sidebar h2 {
+      font-size: 24px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 270px;
+      padding: 40px 20px;
+      flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 40px 20px;
+      position: relative;
     }
 
     .contact-card {
       background: white;
       padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
       max-width: 600px;
       width: 100%;
-      animation: fadeInUp 1s ease;
       text-align: center;
+      animation: fadeInUp 1s ease;
       position: relative;
     }
 
     .contact-card h1 {
-      font-size: 32px;
+      font-size: 36px;
       color: #4b5aa7;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
       gap: 20px;
-      background: #f2f4f8;
-      padding: 15px 20px;
-      border-radius: 12px;
-      margin: 15px 0;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, background-color 0.3s;
+      background: #f0f2fa;
+      padding: 18px 20px;
+      border-radius: 15px;
+      margin: 18px 0;
       cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
     }
 
     .contact-item:hover {
+      background: #d9def3;
       transform: translateY(-5px);
-      background-color: #e8ecf5;
     }
 
-    .contact-item img {
+    .contact-item i {
+      font-size: 28px;
+      color: #4b5aa7;
       width: 40px;
-      height: 40px;
-      transition: transform 0.5s ease;
-    }
-
-    .contact-item:hover img {
-      transform: rotate(10deg) scale(1.1);
+      text-align: center;
     }
 
     .contact-info {
       font-size: 18px;
-      text-align: left;
+      font-weight: 500;
+      color: #333;
     }
 
     .btn-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      font-size: 16px;
-      font-weight: 600;
-      color: #4b5aa7;
+      margin-top: 30px;
       background: linear-gradient(135deg, #a3c1f9, #4b5aa7);
       border: none;
+      color: white;
+      padding: 12px 24px;
+      font-weight: 600;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(75, 90, 167, 0.4);
-      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-      user-select: none;
-      margin-bottom: 25px;
+      transition: transform 0.2s, box-shadow 0.3s;
     }
 
     .btn-back:hover {
-      background: linear-gradient(135deg, #5c72e2, #334a9f);
-      box-shadow: 0 8px 20px rgba(51, 74, 159, 0.6);
-      transform: translateY(-3px) scale(1.05);
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(75, 90, 167, 0.5);
     }
 
-    .btn-back:active {
-      transform: translateY(1px) scale(0.98);
-      box-shadow: 0 3px 8px rgba(75, 90, 167, 0.2);
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-width: 400px;
+      animation: fadeInUp 0.5s ease;
+    }
+
+    .modal-content img {
+      width: 200px;
+      margin-bottom: 15px;
+    }
+
+    .modal-content h2 {
+      color: #4b5aa7;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 600px) {
-      .contact-card {
-        padding: 30px 20px;
-      }
-
-      .contact-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .contact-info {
-        text-align: center;
-        font-size: 16px;
-      }
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; padding: 20px; }
     }
   </style>
 </head>
 <body>
-  <div class="contact-card">
-    <button class="btn-back" onclick="goBack()">← ย้อนกลับ</button>
 
-    <h1>ติดต่อ </h1>
+  <div class="sidebar">
+    <h2>SG Nexsz</h2>
+    <a href="home.html"><i class="fas fa-home"></i> หน้าแรก</a>
+    <a href="about.html"><i class="fas fa-user"></i> เกี่ยวกับเรา</a>
+    <a href="#"><i class="fas fa-box"></i> สินค้า</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i> ติดต่อ</a>
+    <a href="logout.html"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+  </div>
 
-    <div class="contact-item" onclick="window.open('https://www.instagram.com/sorawit_165/', '_blank')">
-      <img src="iglogo.png" alt="Instagram" />
-      <div class="contact-info">@sorawit_165</div>
+  <div class="main">
+    <div class="contact-card">
+      <h1>ติดต่อเรา</h1>
+
+      <div class="contact-item" onclick="window.open('https://www.instagram.com/sorawit_165/', '_blank')">
+        <i class="fab fa-instagram"></i>
+        <div class="contact-info">@sorawit_165</div>
+      </div>
+
+      <div class="contact-item" onclick="copyToClipboard('sorawit_165')">
+        <i class="fab fa-discord"></i>
+        <div class="contact-info">Discord: sorawit_165</div>
+      </div>
+
+      <div class="contact-item" onclick="window.open('https://www.youtube.com/@Sorawit_16', '_blank')">
+        <i class="fab fa-youtube"></i>
+        <div class="contact-info">YouTube: Bedrock Studios</div>
+      </div>
+
+      <div class="contact-item" onclick="openModal()">
+        <i class="fas fa-qrcode"></i>
+        <div class="contact-info">แสดง QR Code</div>
+      </div>
+
+      <button class="btn-back" onclick="window.location.href='home.html'">← ย้อนกลับ</button>
     </div>
+  </div>
 
-    <div class="contact-item" onclick="copyToClipboard('sorawit_165')">
-      <img src="discord.png" alt="Discord" />
-      <div class="contact-info">Discord: sorawit_165</div>
+  <!-- Modal -->
+  <div class="modal" id="qrModal">
+    <div class="modal-close" onclick="closeModal()">×</div>
+    <div class="modal-content">
+      <h2>QR สำหรับติดตามเรา</h2>
+      <img src="your-qr.png" alt="QR Code">
+      <p>สแกนเพื่อเข้าถึง Instagram / Discord / YouTube</p>
     </div>
-
-    <div class="contact-item" onclick="window.open('https://www.youtube.com/@Sorawit_16')">
-      <img src="YT.png" alt="Youtube" />
-      <div class="contact-info">YT Bedrock Studios</div>
-    </div>
-
-    <p style="margin-top: 25px; color: #888; font-size: 14px;">(คลิกเพื่อเปิดหรือคัดลอก)</p>
   </div>
 
   <script>
@@ -160,8 +237,12 @@
       });
     }
 
-    function goBack() {
-      window.location.href = 'home.html';
+    function openModal() {
+      document.getElementById('qrModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('qrModal').style.display = 'none';
     }
   </script>
 </body>
