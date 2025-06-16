@@ -80,6 +80,13 @@
       display: inline-block;
       margin-top: 10px;
     }
+    #message {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      min-height: 20px;
+      transition: all 0.3s ease;
+    }
     @media screen and (max-width: 400px) {
       .box {
         width: 90%;
@@ -93,32 +100,32 @@
     <input type="text" id="username" placeholder="ชื่อผู้ใช้">
     <input type="password" id="password" placeholder="รหัสผ่าน">
     <button onclick="login()">เข้าสู่ระบบ</button>
+    <div id="message"></div> <!-- ✅ กล่องข้อความแสดงผลลัพธ์ -->
     <div class="switch">
       <a href="index.html">ยังไม่มีบัญชี? สมัครเลย</a><br>
       <a href="forget.html">ลืมรหัสผ่าน?</a>
     </div>      
   </div>
+
   <script>
     function login() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
       const storedUser = localStorage.getItem("user");
       const storedPass = localStorage.getItem("pass");
+
       if (username === storedUser && password === storedPass) {
-        window.location.href = "home.html";
+        showMessage("เข้าสู่ระบบสำเร็จ! กำลังพาไปหน้าแรก...", "success");
+        setTimeout(() => window.location.href = "home.html", 1000);
       } else {
-        alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
+        showMessage("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง", "error");
       }
     }
-    function forgotPassword() {
-      const usernameInput = prompt("กรุณาใส่ชื่อผู้ใช้เพื่อขอรหัสผ่าน");
-      const storedUser = localStorage.getItem("user");
-      const storedPass = localStorage.getItem("pass");
-      if (usernameInput === storedUser) {
-        alert(`รหัสผ่านของคุณคือ: ${storedPass}`);
-      } else {
-        alert("ไม่พบชื่อผู้ใช้ในระบบ");
-      }
+
+    function showMessage(text, type) {
+      const msg = document.getElementById("message");
+      msg.textContent = text;
+      msg.style.color = type === "success" ? "#2ecc71" : "#ff4d4f";
     }
   </script>
 </body>
