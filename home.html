@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <title>SG to Nexsz</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -21,6 +23,7 @@
       min-height: 100vh;
       transition: background 2s ease;
       color: #333;
+      padding-left: 70px; /* Space for sidebar */
     }
 
     header {
@@ -104,7 +107,6 @@
       opacity: 1;
       left: 100%;
       top: 100%;
-      transition: all 0.7s ease;
     }
 
     .menu-bar a:hover {
@@ -112,6 +114,75 @@
       color: #222;
       box-shadow: 0 8px 20px rgba(255, 221, 87, 0.7);
       transform: scale(1.05);
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 70px;
+      background: #4b5aa7;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      z-index: 1001;
+      transition: width 0.3s;
+    }
+
+    .sidebar:hover {
+      width: 180px;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      width: 100%;
+      padding: 15px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .sidebar i {
+      font-size: 20px;
+      width: 30px;
+      text-align: center;
+    }
+
+    .sidebar span {
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    .sidebar:hover span {
+      opacity: 1;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #4b5aa7;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+    }
+
+    #scrollTopBtn:hover {
+      background: #6f79e2;
     }
 
     .content {
@@ -122,7 +193,6 @@
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       text-align: center;
-      animation: fadeInUp 1s ease;
     }
 
     .content img {
@@ -257,11 +327,6 @@
       transform: scale(1.1);
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @media (max-width: 1080px) {
       .product-grid {
         flex-direction: column;
@@ -285,11 +350,23 @@
       .product-info {
         padding: 20px 15px;
       }
+      .sidebar {
+        display: none;
+      }
     }
-
   </style>
 </head>
 <body>
+
+  <div class="sidebar">
+    <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="about.html"><i class="fas fa-user"></i><span>About</span></a>
+    <a href="#products"><i class="fas fa-box"></i><span>Products</span></a>
+    <a href="Contact.html"><i class="fas fa-envelope"></i><span>Contact</span></a>
+    <a href="logout.html"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+  </div>
+
+  <button id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
 
   <header>
     <div class="logo">
@@ -300,15 +377,15 @@
     </div>
   </header>
 
-<nav class="menu-bar">
+  <nav class="menu-bar">
     <a href="home.html">Home</a>
     <a href="about.html">About</a>
     <a href="#products">Products</a>
     <a href="Contact.html">Contact</a>
-    <a href="logout.html" class="logout-btn">Logout</a>
+    <a href="logout.html">Logout</a>
   </nav>
 
-  <div class="content">
+  <div class="content" data-aos="fade-up">
     <img src="welcome.gif" alt="Welcome GIF" />
     <h1>SG to Nexsz</h1>
     <p>ยินดีต้อนรับสู่เว็บไซต์ SG Nexsz ของเรา</p>
@@ -316,10 +393,9 @@
   </div>
 
   <section id="products">
-    <h2>ตัวอย่างสินค้า</h2>
+    <h2 data-aos="fade-up">ตัวอย่างสินค้า</h2>
     <div class="product-grid">
-
-      <div class="product-card">
+      <div class="product-card" data-aos="zoom-in">
         <img class="product-image" src="https://png.pngtree.com/png-clipart/20230102/original/pngtree-coming-soon-banner-design-png-image_8856817.png" alt="Product 1" />
         <div class="product-info">
           <h3>Soon!</h3>
@@ -329,7 +405,7 @@
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
         <img class="product-image" src="https://png.pngtree.com/png-clipart/20230102/original/pngtree-coming-soon-banner-design-png-image_8856817.png" alt="Product 2" />
         <div class="product-info">
           <h3>Soon!</h3>
@@ -339,7 +415,7 @@
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
         <img class="product-image" src="https://png.pngtree.com/png-clipart/20230102/original/pngtree-coming-soon-banner-design-png-image_8856817.png" alt="Product 3" />
         <div class="product-info">
           <h3>Soon!</h3>
@@ -348,9 +424,21 @@
           <button>ซื้อเลย</button>
         </div>
       </div>
-
     </div>
   </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const btn = document.getElementById("scrollTopBtn");
+    window.onscroll = () => {
+      btn.style.display = (document.documentElement.scrollTop > 300) ? "block" : "none";
+    };
+    btn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
 
 </body>
 </html>
